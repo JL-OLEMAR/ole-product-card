@@ -6,7 +6,7 @@ import {  ProductCard } from '../../src/components';
 
 const { act } = renderer;
 
-describe.only('ProductCard', () => {
+describe('ProductCard', () => {
   test('should display the component correctly', () => {
     const wrapper = renderer.create(
       <ProductCard product={product1}>

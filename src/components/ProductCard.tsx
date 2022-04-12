@@ -1,12 +1,15 @@
-import React, { createContext } from 'react'
+import React, { createContext } from 'react';
 
-import { useProduct } from '../hooks/useProduct'
-import { ProductCardProps, ProductContextProps } from '../interfaces/interfaces'
-import styles from '../styles/styles.module.css'
+import { useProduct } from '../hooks/useProduct';
+import {
+  ProductCardProps,
+  ProductContextProps,
+} from '../interfaces/interfaces';
+import styles from '../styles/styles.module.css';
 
 // Here, create a context that will be used by ProductCard.
-export const ProductContext = createContext({} as ProductContextProps)
-const { Provider } = ProductContext
+export const ProductContext = createContext({} as ProductContextProps);
+const { Provider } = ProductContext;
 
 // Component Main ProductCard, and Provider to the children
 export function ProductCard({
@@ -16,15 +19,15 @@ export function ProductCard({
   value,
   initialValues,
   children,
-  onChange
+  onChange,
 }: ProductCardProps) {
-  const { counter, maxCount, isMaxCountReached, increaseBy, reset } =
-    useProduct({
-      product,
-      value,
-      initialValues,
-      onChange
-    })
+  const {
+    counter,
+    maxCount,
+    isMaxCountReached,
+    increaseBy,
+    reset,
+  } = useProduct({ product, value, initialValues, onChange });
 
   return (
     <Provider value={{ counter, maxCount, product, increaseBy }}>
@@ -35,9 +38,9 @@ export function ProductCard({
           isMaxCountReached,
           maxCount: initialValues?.maxCount,
           increaseBy,
-          reset
+          reset,
         })}
       </div>
     </Provider>
-  )
+  );
 }
